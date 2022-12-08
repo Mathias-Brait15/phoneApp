@@ -6,6 +6,7 @@ class Controller{
     static list(req, res){
         const {search} = req.query
         let option = {}
+        let itemData = null
 
         if(search){
             option.where = {name: {[Op.iLike] : `%${search}%`}}
@@ -28,6 +29,31 @@ class Controller{
     static addItem(req, res){
         const {name, price, stock, image} = req.body
         Item.create({name, price, stock, image})
+        .then((data) => {
+            res.redirect('/admin')
+        })
+        .catch((err) => {
+            res.redirect('addItem', {err})
+        })
+    }
+
+    static editProfileForm(req, res){
+        Profile.findOne({
+            include :  {model: User},
+            where: {id : req.session.UserId}
+        })
+        .then((data) => {
+            res.render('editProfile', {data})
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
+
+    static editProfile(req, res){
+        const {fullName, address, phone, gender,amount} = req.body
+        Profile.update({fullName, address, phone, gender,amount},
+            {where: {id : req.session.UserId}}
+        )
         .then((data) => {
             res.redirect('/admin')
         })
