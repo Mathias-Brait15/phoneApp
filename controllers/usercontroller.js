@@ -44,6 +44,7 @@ class Controller{
             if(user){
                 const isValidate = bcrypt.compareSync(password , user.password)
                 if(isValidate){
+                    
                     response.send('benar')
                 }else{
                     const errorMessage = 'Invalid Username / Password' 
