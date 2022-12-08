@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<%- include('partials/navbar.ejs') %>
+<body>
+    <br><br>
+        <form action="/admin/<%=data.id%>/editItem" method="post" autocomplete="off">
+            Name:<br>
+            <input type="text" name="name" value="<%=data.name%>"><br><br>
+            Price:<br>
+            <input type="number" name="price" value="<%=data.price%>"><br><br>
+            Stock:<br>
+            <input type="number" name="stock" value="<%=data.stock%>"><br><br>
+            Image:<br>
+            <input type="text" name="image" value="<%=data.image%>"><br><br>
+            <input type="submit" value="Edit Item">
+        </form>
+</body>
+</html>
