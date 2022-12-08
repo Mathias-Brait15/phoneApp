@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome To Homepage User</h1>
+    <h1>Welcome To Indomie Seleraku, <%=dataProfile.fullName%></h1>
+    <div class="row col-sm-12" style="margin-left: 20px;">
+        <% items.forEach(el => { %>
+          <div class="card" style="width: 18rem; margin: 20px;">
+            <img src="<%= el.image %>" class="card-img-top" alt="img" style="width:260px" height="300px">
+            <div class="card-body">
+              <h5 class="card-title"><%= el.name %></h5>
+              <p class="card-text"><%= el.price %></p>
+              <p class="card-text"><%= el.stock %></p>
+              <a href="users/item/<%=el.id%>/buy">
+                <button>Buy</button>
+              </a>
+  
+            </div>
+          </div>
+        <% }) %>
+
 </body>
 </html>
