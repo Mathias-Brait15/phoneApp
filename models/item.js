@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 
     get ambiguStock(){
       if (this.stock === 0){
-        return 'Mohon maaf, barang sudah habis'
+        return 'Mohon maaf, barang sudah sold out'
       } else if (this.stock < 10){
         return 'Ayo buruan! Barang udah tinggal kurang dari 10!'
       } else if (this.stock < 50){
