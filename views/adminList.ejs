@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<%- include('partials/navbar.ejs') %>
+<body>
+    <br>
+    <br>
+    <button onclick="location.href='/admin/addItem'">Add</button>
+    <form action="/admin" method="get">
+        <input type="text" name="search"><input type="submit" value="search">
+    </form>
+    <table border=1>
+        <tr>
+            <td>Image</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Stock</td>
+            <td>Action</td>
+        </tr>
+        <% data.forEach(ele => { %>
+        <tr>
+            <td><%=ele.image%></td>
+            <td><%=ele.name%></td>
+            <td><%=formatPrice(ele.price)%></td>
+            <td><%=ele.ambiguStock%></td>
+            <td><button onclick="location.href='/admin/<%=ele.id%>/editItem'">Edit</button>
+            <button onclick="location.href='/admin/<%=ele.id%>/deleteItem'">Delete</button></td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
