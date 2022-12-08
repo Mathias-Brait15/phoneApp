@@ -4,6 +4,14 @@ const bcrypt = require('bcryptjs');
 
 class Controller{
 
+    static homepage(request , response){
+        response.render('homepage')
+    }
+
+    static coba(request , response){
+        response.send('sad')
+    }
+
     static renderRegister(request , response){
        const error = request.query.error
        response.render('formRegister' , {error})
@@ -44,7 +52,12 @@ class Controller{
             if(user){
                 const isValidate = bcrypt.compareSync(password , user.password)
                 if(isValidate){
-                    response.send('benar')
+                    request.session.UserId = user.id
+                    if(user.role === "Admin"){
+                        response.redirect('/admin')
+                    }else if(user.role === "User"){
+                        response.redirect('/users')
+                    }
                 }else{
                     const errorMessage = 'Invalid Username / Password' 
                     response.redirect(`/login?error=${errorMessage}`)
