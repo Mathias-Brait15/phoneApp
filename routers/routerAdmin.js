@@ -11,6 +11,11 @@ router.get('/addItem', Controller.addForm)
 //Button untuk POST AddItem
 router.post('/addItem', Controller.addItem)
 
+//Button untuk EDIT Profile
+router.get('/editProfile', Controller.editProfileForm)
+
+router.post('/:id/editProfile', Controller.editProfile)
+
 //Button untuk GET EditItem form
 router.get('/:id/editItem', Controller.editForm)
 
@@ -19,5 +24,7 @@ router.post('/:id/editItem', Controller.editItem)
 
 //Button untuk DELETE Item
 router.get('/:id/deleteItem', Controller.deleteItem)
+
+
 
 module.exports = router

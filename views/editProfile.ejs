@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<%- include('partials/navbar.ejs') %>
+<body>
+    <br><br>
+        <form action="/admin/<%=data.id%>/editProfile" method="post" autocomplete="off">
+            Name:<br>
+            <input type="text" name="fullname" value="<%=data.fullName%>"><br><br>
+            Address:<br>
+            <input type="text" name="address" value="<%=data.address%>"><br><br>
+            Phone Number:<br>
+            <input type="text" name="phone" value="<%=data.phone%>"><br><br>
+            Gender:<br>
+            <select name="gender">
+                <option hidden>--Choose One--</option>
+                <option <%=data.gender === 'male' ? 'selected' : ''%> value= 'male'>Male</option>
+                <option <%=data.gender === 'female' ? 'selected' : ''%> value= 'female'>Female</option>
+            </select><br><br>
+            Balance:<br>
+            <input type="number" name="amount" value="<%=data.amount%>"><br><br>
+            <input type="submit" value="Edit Item">
+        </form>
+</body>
+</html>
