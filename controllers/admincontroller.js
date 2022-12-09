@@ -22,7 +22,8 @@ class Controller{
     }
 
     static addForm(req, res){
-        res.render('addItem')
+        const {error} = req.query
+        res.render('addItem', {error})
     }
 
     static addItem(req, res){
@@ -32,17 +33,62 @@ class Controller{
             res.redirect('/admin')
         })
         .catch((err) => {
+            let errors = []
+            if(err.name === 'SequelizeValidationError'){
+                err.errors.forEach((el) => {
+                    errors.push(el.message)
+                })
+                res.redirect(`/admin/addItem?error=${errors}`)
+            }else{
+                res.send(err)
+                console.log(err)
+            }
+        })
+    }
+
+    static editProfileForm(req, res){
+        const {error} = req.query
+        Profile.findOne({
+            include :  {model: User},
+            where: {id : req.session.UserId}
+        })
+        .then((data) => {
+            res.render('editProfile', {data, error})
+        }).catch((err) => {
             res.send(err)
+        });
+    }
+
+    static editProfile(req, res){
+        const {fullName, address, phone, gender,amount} = req.body
+        Profile.update({fullName, address, phone, gender,amount},
+            {where: {id : req.session.UserId}}
+        )
+        .then((data) => {
+            res.redirect('/admin')
+        })
+        .catch((err) => {
+            let errors = []
+            if(err.name === 'SequelizeValidationError'){
+                err.errors.forEach((el) => {
+                    errors.push(el.message)
+                })
+                res.redirect(`/admin/addItem?error=${errors}`)
+            }else{
+                res.send(err)
+                console.log(err)
+            }
         })
     }
 
     static editForm(req, res){
         const {id} = req.params
+        const {error} = req.query
         Item.findOne({
             where: {id}
         })
         .then((data) => {
-            res.render('editItem', {data})
+            res.render('editItem', {data, error})
         })
         .catch((err) => {
             console.log(err)
@@ -60,7 +106,15 @@ class Controller{
             res.redirect('/admin')
         })
         .catch((err) => {
-            res.send(err)
+            let errors = []
+            if(err.name === 'SequelizeValidationError'){
+                err.errors.forEach((el) => {
+                    errors.push(el.message)
+                })
+                res.redirect(`/admin/${id}/editItem/?error=${errors}`)
+            }else{
+                res.send(err)
+            }
         })
     }
 

@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       } else if (this.stock < 10){
         return 'Ayo buruan! Barang udah tinggal kurang dari 10!'
       } else if (this.stock < 50){
-        return 'Lagi populer nih.. Udah tinggal 50'
+        return 'Lagi populer nih.. Udah kurang dari 50'
       } else {
         return 'Santai aja.. Stok barang masih banyak'
       }

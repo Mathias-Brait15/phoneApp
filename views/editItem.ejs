@@ -8,15 +8,18 @@
 </head>
 <%- include('partials/navbar.ejs') %>
 <body>
+    <%if(error){%>
+        <p style="color: red;"><%=error%></p>
+    <%}%> 
     <br><br>
-        <form action="/admin/<%=data.id%>/editItem" method="post" autocomplete="off">
+        <form action="/admin/<%=data.id%>/editItem" method="post" autocomplete="off" style="margin-left: 20px">
             Name:<br>
             <input type="text" name="name" value="<%=data.name%>"><br><br>
             Price:<br>
             <input type="number" name="price" value="<%=data.price%>"><br><br>
             Stock:<br>
             <input type="number" name="stock" value="<%=data.stock%>"><br><br>
-            Image:<br>
+            Image:<br>Rendang
             <input type="text" name="image" value="<%=data.image%>"><br><br>
             <input type="submit" value="Edit Item">
         </form>
