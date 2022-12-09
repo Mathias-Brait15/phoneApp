@@ -64,6 +64,31 @@ class Controller{
         })
     }
 
+    static editProfileForm(req, res){
+        Profile.findOne({
+            include :  {model: User},
+            where: {id : req.session.UserId}
+        })
+        .then((data) => {
+            res.render('editProfile', {data})
+        }).catch((err) => {
+            res.send(err)
+        });
+    }
+
+    static editProfile(req, res){
+        const {fullName, address, phone, gender,amount} = req.body
+        Profile.update({fullName, address, phone, gender,amount},
+            {where: {id : req.session.UserId}}
+        )
+        .then((data) => {
+            res.redirect('/admin')
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+    }
+
     static deleteItem(req, res){
         const {id} = req.params
         Item.destroy({

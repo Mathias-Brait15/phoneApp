@@ -11,19 +11,22 @@ class Controller{
 
     static handleRegister(request , response){
        const {email , password , role} = request.body 
-       User.create({email , password , role})
-       .then((newUser) => {
-        response.redirect('/login')
+
+       User.findAll()
+       .then((result) => {
+        result.forEach(element => {
+            if(element.email == email && element.role == role){
+                const errorMessage = `Email is already exist`
+               return response.redirect(`/register?error=${errorMessage}`)
+            }else{
+                User.create({email , password , role})
+                .then((_) => {
+                    response.redirect('/login')
+                })
+            }
+        });
        }).catch((err) => {
-        let errorMassage = []
-        if(err.name === 'SequelizeValidationError'){
-            err.errors.forEach((el) => {
-                errorMassage.push(el.message)
-            })
-            response.redirect(`/register?error=${errorMassage}`)
-        }else{
             response.send(err)
-        }
        });
     }
 
