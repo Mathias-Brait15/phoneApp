@@ -11,6 +11,10 @@ router.get('/addItem', Controller.addForm)
 //Button untuk POST AddItem
 router.post('/addItem', Controller.addItem)
 
+// Button Edit Profile
+router.get('/editProfile', Controller.editProfileForm)
+router.post('/:id/editProfile', Controller.editProfile)
+
 //Button untuk GET EditItem form
 router.get('/:id/editItem', Controller.editForm)
 

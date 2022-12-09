@@ -1,0 +1,32 @@
+[
+    { 
+        "name": "Indomie Goreng",
+        "price": 5000,
+        "stock": 0,
+        "image": "https://www.indomie.com/uploads/product/indomie-mi-goreng-special_thumb_094906798.png"
+    },
+    { 
+        "name": "Indomie Kari Ayam",
+        "price": 5000,
+        "stock": 2,
+        "image": "https://www.indomie.com/uploads/product/indomie-chicken-curry-flavour_thumb_172651966.png"
+    },
+    { 
+        "name": "Indomie Goreng Rendang",
+        "price": 10000,
+        "stock": 11,
+        "image": "https://www.indomie.com/uploads/product/indomie-mi-goreng-rendang-flavour_thumb_170333176.png"
+    },
+    { 
+        "name": "Indomie Soto Spesial",
+        "price": 10000,
+        "stock": 11,
+        "image": "https://www.indomie.com/uploads/product/indomie-soto-special_thumb_165023367.png"
+    },
+    { 
+        "name": "Indomie Rasa Sayur",
+        "price": 5000,
+        "stock": 51,
+        "image": "https://www.indomie.com/uploads/product/indomie-vegetable-flavour_thumb_164957376.png"
+    }
+]

@@ -1,5 +1,6 @@
 const {Item , User , Profile , Transaction, sequelize} = require('../models/index');
 const { QueryTypes } = require('sequelize');
+const formatPrice = require('../helper/formatCurrency')
 class Controller{
 
     static homepage(request , response){
@@ -14,7 +15,7 @@ class Controller{
             dataProfile = result
             return Item.findAll()
         .then((items) => {
-            response.render('homepage',{dataProfile , items})
+            response.render('homepage',{dataProfile , items, formatPrice})
             // response.send({dataProfile , items})
         })
         }).catch((err) => {
@@ -74,7 +75,7 @@ class Controller{
             listItem = result
             return sequelize.query(query2 ,  { type: QueryTypes.SELECT })
         .then((totalTransaction) => {
-            response.render( 'checkout', {listItem , totalTransaction})
+            response.render( 'checkout', {listItem , totalTransaction, formatPrice})
 
             // response.send({listItem , totalTransaction})
         })

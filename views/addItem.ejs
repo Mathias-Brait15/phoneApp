@@ -9,7 +9,10 @@
 <%- include('partials/navbar.ejs') %>
 <body>
     <br><br>
-    <form action="/admin/addItem" method="post" autocomplete="off">
+    <%if(error){%>
+        <p style="color: red;"><%=error%></p>
+    <%}%> 
+    <form action="/admin/addItem" method="post" autocomplete="off" style="margin-left: 20px">
         Name:<br>
         <input type="text" name="name"><br><br>
         Price:<br>
