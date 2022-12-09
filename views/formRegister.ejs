@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Form Register</title>
 </head>
-<body>
+<body class="container">
 
+    <h1 class="text-info" style="padding-top: 100px; text-align: center;">Register Now</h1>
     <%if(error){ %>
         <p style="color: red;"><%=error%></p>
     <%}%> 
     <form action="/register" method="post">
+        <div class="form-group">
         <label>Email: </label><br>
-        <input type="text" name="email" autocomplete="off"><br><br>
-       
+        <input type="text" name="email" class="form-control" autocomplete="off">
+       <br>
         <label>Password: </label><br>
-        <input type="password" name="password" autocomplete="off"><br><br>
+        <input type="password" name="password" class="form-control" autocomplete="off"><br> 
         <label>Role: </label><br>
-        <select name="role">
+        <select name="role" class="form-control">
             <option selected>--Please choose your role--</option>
             <option value="Admin">Admin</option>
             <option value="User">User</option>
         </select><br><br>
 
-        <button type="submit">Register</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" style="text-align: center;">Register</button>
+    </div>
     </form>
     
 </body>

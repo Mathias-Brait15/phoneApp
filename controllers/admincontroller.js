@@ -71,8 +71,6 @@ class Controller{
         })
         .then((data) => {
             res.render('editProfile', {data})
-
-            // console.log(req.session.UserId);
         }).catch((err) => {
             res.send(err)
         });

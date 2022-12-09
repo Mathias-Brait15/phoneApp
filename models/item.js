@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes) => {
       Item.hasMany(models.Transaction)
     }
 
-    get ambiguStock(){
+    ambiguStock(){
       if (this.stock === 0){
         return 'Mohon maaf, barang sudah habis'
       } else if (this.stock < 10){
-        return 'Ayo buruan! Barang udah tinggal kurang dari 10!'
+        return 'Ayo buruan! Barang udah tinggal kurang  10 nihh!'
       } else if (this.stock < 50){
-        return 'Lagi populer nih.. Udah tinggal 50'
+        return 'Lagi populer nih.. sisa 50 doanggg!'
       } else {
-        return 'Santai aja.. Stok barang masih banyak'
+        return 'Santai aja.. Stok masih banyak'
       }
     }
   }
